@@ -1,0 +1,18 @@
+.SelectedImg {
+    width: 100px;
+    height: auto;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape),
+(min-width: 768px) and (max-width: 1024px) {
+    .SelectedImg {
+        width: 60px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px),
+(min-width: 320px) and (max-width: 480px){
+    .SelectedImg {
+        width: 40px;
+    }
+}

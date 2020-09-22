@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+  background: darkgreen;
+  height: 100vh;
+  overflow: no-display;
+}
+
+.CenterWrapper, .CenterWrapperColumn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100px;
+  display: flex;
+  text-align: center;
+}
+
+.CenterWrapperColumn {
+  flex-direction: column;
+}

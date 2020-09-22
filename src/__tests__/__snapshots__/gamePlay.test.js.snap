@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game Play page It matches snapshot 1`] = `
+<div
+  className="GameWrapper"
+>
+  <div
+    className="CenterWrapper"
+  />
+  <div
+    className="DeckOfCardsWrapper"
+  />
+</div>
+`;

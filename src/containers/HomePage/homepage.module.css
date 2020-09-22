@@ -1,0 +1,24 @@
+.NumberOfPlayersText {
+    font-size: 22px;
+    text-align: center;
+    color: #fff;
+}
+
+.NumberOfPlayersButtons {
+    display: flex;
+    flex-direction: column;
+}
+
+.NumberOfPlayersButtons button {
+    padding: 10px;
+    border-radius: 7px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #fff;
+    color: #000;
+}
+
+.NumberOfPlayersButtons button:hover {
+    background-color: lightgray;
+}

@@ -1,0 +1,8 @@
+.DeckOfCardsWrapper,
+.GameWrapper {
+    display: flex;
+}
+
+.NotificationBarMessage {
+    font-weight: bold;
+}

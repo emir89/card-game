@@ -1,0 +1,214 @@
+.Clickable {
+    cursor: pointer;
+}
+
+.Top, .Bottom {
+    left: 50%;
+    transform: translate(-45%, -50%);
+}
+
+.DeckWrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+.DeckWrapper.Top {
+    flex-direction: column-reverse;
+}
+
+.Score {
+    color: #fff;
+}
+
+.CurrentPlayer {
+    font-size: 22px;
+    font-weight: bold;
+    color: greenyellow;
+}
+
+.PlayerName {
+    color: #fff;
+}
+
+.Right {
+    flex-direction: row;
+    right: 45px;
+}
+
+.Left {
+    flex-direction: row-reverse;
+    left: 45px;
+}
+
+.Right img, .Left img {
+    transform: rotate(90deg);
+    margin-bottom: -40px;
+}
+
+.Top img, .Bottom img {
+    margin-left: -25px;
+}
+
+.Top {
+    top: 115px;
+}
+
+.Bottom {
+    bottom: -61px;
+}
+
+.Img {
+    width: 80px;
+    height: auto;
+}
+
+.Right, .Left {
+    align-items: center;
+    top: 48%;
+    transform: translateY(-51%);
+}
+
+.DeckWrapper.Top .PlayerInfo, .DeckWrapper.Bottom .PlayerInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.DeckWrapper.Left > div, .DeckWrapper.Right > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.PlayerInfo {
+    font-size: 18px;
+}
+
+.DeckWrapper.Top .PlayerInfo {
+    margin-top: 15px;
+}
+
+.DeckWrapper.Bottom .PlayerInfo {
+    margin-bottom: 15px;
+}
+
+.DeckWrapper.Left .PlayerInfo {
+    margin: 30px 0 0 30px;
+}
+
+.DeckWrapper.Right .PlayerInfo {
+    margin: 30px 30px 0 0;
+}
+
+.DeckWrapper.Top .PlayerInfo, .DeckWrapper.Bottom .PlayerInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 25px;
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .Top {
+        top: 100px;
+    }
+
+    .Bottom {
+        bottom: -50px;
+    }
+
+    .Img {
+        width: 60px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape),
+(min-width: 768px) and (max-width: 1024px) {
+    .Img {
+        width: 60px;
+    }
+
+    .Top {
+        top: 105px;
+    }
+
+    .Bottom {
+        bottom: -45px;
+    }
+
+    .Left {
+        left: 45px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 480px),
+(min-width: 481px) and (max-width: 767px) {
+    .PlayerInfo {
+        font-size: 12px
+    }
+
+    .Top {
+        top: 85px;
+    }
+
+    .Bottom {
+        bottom: -35px;
+    }
+
+    .Right {
+        flex-direction: column;
+        right: -5px;
+    }
+
+    .Left {
+        flex-direction: column-reverse;
+        left: 25px;
+    }
+
+    .DeckWrapper.Right .PlayerInfo {
+        margin-left: 30px;
+    }
+
+    .DeckWrapper.Left .PlayerInfo {
+        margin: 40px 2px 0 0;
+    }
+
+    .DeckWrapper.Left, .DeckWrapper.Right {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 45%;
+    }
+
+    .DeckWrapper.Left {
+        -webkit-transform: translateY(-40%);
+        -ms-transform: translateY(-40%);
+        transform: translateY(-40%);
+    }
+
+    .DeckWrapper.Right {
+        -webkit-transform: translateY(-55%);
+        -ms-transform: translateY(-55%);
+        transform: translateY(-55%);
+    }
+
+    .Img {
+        width: 40px;
+    }
+
+    .Top img, .Bottom img {
+        margin-left: -22px;
+    }
+
+    .PlayerInfo {
+        font-size: 12px
+    }
+
+    .PlayerName {
+        font-size: 16px;
+    }
+
+    .Score {
+        font-size: 16px;
+    }
+}
+
