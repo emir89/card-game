@@ -1,9 +1,11 @@
 import React from 'react';
 import Modal from 'react-modal';
-import PropTypes from 'prop-types';
 import style from './gameWinner.module.css'
+import { WinnerByRound } from '../../types';
+import { useNavigate } from 'react-router-dom'
 
-function GameWinner({gameWinners, history}) {
+const GameWinner = ({gameWinners}: {gameWinners: WinnerByRound[]}) => {
+    const navigate = useNavigate();
     const oneOrMoreWinners = `The ${gameWinners.length > 1 ?
         'winners are' : 'winner is'}:`;
 
@@ -25,16 +27,11 @@ function GameWinner({gameWinners, history}) {
                             )
                         })
                     }
-                    <button className={style.CloseButton} onClick={() => history.push('/')}>Close</button>
+                    <button className={style.CloseButton} onClick={() => navigate('/')}>Close</button>
                 </div>
             </div>
         </Modal>
     )
 }
-
-GameWinner.propTypes = {
-    gameWinners: PropTypes.array.isRequired,
-    history: PropTypes.object
-};
 
 export default GameWinner;

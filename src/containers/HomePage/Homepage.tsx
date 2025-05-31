@@ -1,15 +1,11 @@
 import React from 'react';
-import style from './homepage.module.css'
+import { useNavigate } from 'react-router-dom';
+import style from './homepage.module.css';
 
-function HomePage({history}) {
-    /**
-     * Starts the game
-     *
-     * @param numOfPlayers
-     * @return void
-     */
-    function handleStartOfGame(numOfPlayers) {
-        history.push(`/game-play/${numOfPlayers}`);
+const HomePage: React.FC = () => {
+    const navigate = useNavigate();
+    function handleStartOfGame(numOfPlayers: number) {
+        navigate(`/game-play/${numOfPlayers}`);
     }
 
     return (
@@ -24,7 +20,6 @@ function HomePage({history}) {
             </div>
         </div>
     );
-}
+};
 
 export default HomePage;
-
