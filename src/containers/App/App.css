@@ -5,7 +5,8 @@
   overflow: no-display;
 }
 
-.CenterWrapper, .CenterWrapperColumn {
+.CenterWrapper,
+.CenterWrapperColumn {
   position: absolute;
   top: 50%;
   left: 50%;

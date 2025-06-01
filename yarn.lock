@@ -1150,6 +1150,7 @@ __metadata:
     history: "npm:^4.10.1"
     immer: "npm:^7.0.8"
     jest-fetch-mock: "npm:^2.1.2"
+    prettier: "npm:^3.5.3"
     prop-types: "npm:^15.7.2"
     react: "npm:^19.1.0"
     react-dom: "npm:^19.1.0"
@@ -2256,6 +2257,15 @@ __metadata:
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.1"
   checksum: 10c0/b75510d7b28c3ab728c8733dd01538314a18c52af426f199a3c9177e63eb08602a3938bfb66b62dc01350b9aed62087eabbf229af97a1659eb8d3513cec823b3
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3.5.3":
+  version: 3.5.3
+  resolution: "prettier@npm:3.5.3"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 10c0/3880cb90b9dc0635819ab52ff571518c35bd7f15a6e80a2054c05dbc8a3aa6e74f135519e91197de63705bcb38388ded7e7230e2178432a1468005406238b877
   languageName: node
   linkType: hard
 

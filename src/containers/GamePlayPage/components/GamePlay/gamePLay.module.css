@@ -1,8 +1,14 @@
-.DeckOfCardsWrapper,
-.GameWrapper {
-    display: flex;
+.CircleTable {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 600px;
+  margin-bottom: 1rem;
+  display: block;
 }
 
+
 .NotificationBarMessage {
-    font-weight: bold;
+  font-weight: bold;
+  font-size: 1.125rem;
 }

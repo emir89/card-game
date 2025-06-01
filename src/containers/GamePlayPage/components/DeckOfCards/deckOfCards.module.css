@@ -1,214 +1,282 @@
-.Clickable {
-    cursor: pointer;
+:root {
+  --card-width: 5rem;
+  --card-width-sm: 2.5rem;
+  --card-shadow: 0 0.125rem 0.5rem #0002;
+  --card-shadow-hover: 0 0.5rem 1.5rem #0005;
+  --player-name-color: #fff;
+  --score-color: #fff;
+  --current-player-color: greenyellow;
 }
 
-.Top, .Bottom {
-    left: 50%;
-    transform: translate(-45%, -50%);
+/* Deck positions */
+.Deck {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
 }
 
-.DeckWrapper {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
+/* Force vertical stacking of cards in left/right decks */
+.Deck--left .CardsWrapper,
+.Deck--right .CardsWrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
 }
 
-.DeckWrapper.Top {
-    flex-direction: column-reverse;
+.Deck--left {
+  left: 2vw;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column !important;
+  align-items: flex-start;
+} /* unchanged: vw/% units */
+
+.Deck--right {
+  right: 2vw;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column !important;
+  align-items: flex-end;
+} /* unchanged: vw/% units */
+
+.Deck--top {
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+} /* unchanged: % units */
+
+.Deck--bottom {
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  overflow: visible;
+  will-change: transform;
+  margin-bottom: 1.5rem;
 }
 
-.Score {
-    color: #fff;
+/* Prevent scrollbars on hover for player 1 deck */
+.CircleTable {
+  overflow: visible !important;
+  max-width: 100vw;
 }
 
-.CurrentPlayer {
-    font-size: 22px;
-    font-weight: bold;
-    color: greenyellow;
-}
-
-.PlayerName {
-    color: #fff;
-}
-
-.Right {
-    flex-direction: row;
-    right: 45px;
-}
-
-.Left {
-    flex-direction: row-reverse;
-    left: 45px;
-}
-
-.Right img, .Left img {
-    transform: rotate(90deg);
-    margin-bottom: -40px;
-}
-
-.Top img, .Bottom img {
-    margin-left: -25px;
-}
-
-.Top {
-    top: 115px;
-}
-
-.Bottom {
-    bottom: -61px;
-}
-
-.Img {
-    width: 80px;
-    height: auto;
-}
-
-.Right, .Left {
-    align-items: center;
-    top: 48%;
-    transform: translateY(-51%);
-}
-
-.DeckWrapper.Top .PlayerInfo, .DeckWrapper.Bottom .PlayerInfo {
-    display: flex;
-    flex-direction: column;
+/* Prevent scaling out of bounds for player 1 deck */
+.Deck--bottom .Card--clickable:hover {
+  transform: scale(1.07) !important;
+  z-index: 2;
 }
 
 
-.DeckWrapper.Left > div, .DeckWrapper.Right > div {
-    display: flex;
-    flex-direction: column;
+/* Card styles */
+.Card {
+  width: var(--card-width);
+  height: auto;
+  transition:
+    transform 0.18s cubic-bezier(0.4, 1.4, 0.6, 1),
+    box-shadow 0.18s cubic-bezier(0.4, 1.4, 0.6, 1);
+  box-shadow: var(--card-shadow);
+  will-change: transform, box-shadow;
+  cursor: default;
+}
+.Card--clickable {
+  cursor: pointer;
 }
 
+.Card--clickable:hover {
+  transform: scale(1.13) rotate(1deg);
+  box-shadow: var(--card-shadow-hover);
+  z-index: 2;
+}
+.Deck--left .Card {
+  transform: rotate(90deg);
+  margin-bottom: -2.5rem;
+}
+.Deck--right .Card {
+  transform: rotate(-90deg);
+  margin-bottom: -2.5rem;
+}
+.Deck--left .Card--clickable:hover {
+  transform: scale(1.13) rotate(90deg) !important;
+}
+.Deck--right .Card--clickable:hover {
+  transform: scale(1.13) rotate(-90deg) !important;
+}
+
+.Deck--top .Card {
+  transform: rotate(180deg);
+  margin-left: -1.5625rem;
+}
+.Deck--bottom .Card {
+  margin-left: -1.5625rem;
+}
+.Card--placeholder {
+  opacity: 0.18;
+  filter: grayscale(1);
+  pointer-events: none;
+  box-shadow: none;
+  transition: none;
+  cursor: default;
+}
+
+/* Player info */
 .PlayerInfo {
-    font-size: 18px;
+  font-size: 1.125rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 1.5625rem;
 }
 
-.DeckWrapper.Top .PlayerInfo {
-    margin-top: 15px;
+.PlayerInfoContainer {
+  background: rgba(0,0,0,0.6);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.25rem auto;
+  font-size: 1.125rem;
 }
 
-.DeckWrapper.Bottom .PlayerInfo {
-    margin-bottom: 15px;
+.PlayerInfoCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0.25rem auto;
 }
 
-.DeckWrapper.Left .PlayerInfo {
-    margin: 30px 0 0 30px;
+.PlayerInfoContainerBase {
+  background: rgba(0,0,0,0.6);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  white-space: nowrap;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.DeckWrapper.Right .PlayerInfo {
-    margin: 30px 30px 0 0;
+.PlayerInfoLeft {
+  composes: PlayerInfoContainerBase;
+  position: absolute;
+  left: calc(100% + 2rem);
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left center;
 }
 
-.DeckWrapper.Top .PlayerInfo, .DeckWrapper.Bottom .PlayerInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-right: 25px;
+.PlayerInfoRight {
+  composes: PlayerInfoContainerBase;
+  position: absolute;
+  right: calc(100% + 2rem);
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: right center;
 }
 
+.PlayerInfoBottom {
+  composes: PlayerInfoContainerBase;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  margin-top: 0.5rem;
+}
+
+.PlayerInfo__name {
+  color: var(--player-name-color);
+}
+.PlayerInfo__name--current {
+  font-size: 1.375rem;
+  font-weight: bold;
+  color: var(--current-player-color);
+}
+.PlayerInfo__score {
+  color: var(--score-color);
+}
+
+/* Responsive adjustments */
 @media (min-width: 1025px) and (max-width: 1280px) {
-    .Top {
-        top: 100px;
-    }
-
-    .Bottom {
-        bottom: -50px;
-    }
-
-    .Img {
-        width: 60px;
-    }
+  .Deck--top {
+    top: 1.875rem;
+  }
+  .Deck--bottom {
+    bottom: -3.125rem;
+  }
+  .Card {
+    width: 3.75rem;
+  }
 }
-
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape),
-(min-width: 768px) and (max-width: 1024px) {
-    .Img {
-        width: 60px;
-    }
-
-    .Top {
-        top: 105px;
-    }
-
-    .Bottom {
-        bottom: -45px;
-    }
-
-    .Left {
-        left: 45px;
-    }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .Card {
+    width: 3.75rem;
+  }
+  .Deck--top {
+    top: 6.5625rem;
+  }
+  .Deck--bottom {
+    bottom: -2.8125rem;
+  }
+  .Deck--left {
+    left: 2.8125rem;
+    left: 45px;
+  }
 }
-
-@media (min-width: 320px) and (max-width: 480px),
-(min-width: 481px) and (max-width: 767px) {
-    .PlayerInfo {
-        font-size: 12px
-    }
-
-    .Top {
-        top: 85px;
-    }
-
-    .Bottom {
-        bottom: -35px;
-    }
-
-    .Right {
-        flex-direction: column;
-        right: -5px;
-    }
-
-    .Left {
-        flex-direction: column-reverse;
-        left: 25px;
-    }
-
-    .DeckWrapper.Right .PlayerInfo {
-        margin-left: 30px;
-    }
-
-    .DeckWrapper.Left .PlayerInfo {
-        margin: 40px 2px 0 0;
-    }
-
-    .DeckWrapper.Left, .DeckWrapper.Right {
-        display: flex;
-        align-items: center;
-        position: absolute;
-        top: 45%;
-    }
-
-    .DeckWrapper.Left {
-        -webkit-transform: translateY(-40%);
-        -ms-transform: translateY(-40%);
-        transform: translateY(-40%);
-    }
-
-    .DeckWrapper.Right {
-        -webkit-transform: translateY(-55%);
-        -ms-transform: translateY(-55%);
-        transform: translateY(-55%);
-    }
-
-    .Img {
-        width: 40px;
-    }
-
-    .Top img, .Bottom img {
-        margin-left: -22px;
-    }
-
-    .PlayerInfo {
-        font-size: 12px
-    }
-
-    .PlayerName {
-        font-size: 16px;
-    }
-
-    .Score {
-        font-size: 16px;
-    }
+@media (max-width: 767px) {
+  .PlayerInfo {
+    font-size: 0.75rem;
+  }
+  .Deck--top {
+    top: 5.3125rem;
+  }
+  .Deck--bottom {
+    bottom: -2.1875rem;
+  }
+  .Deck--right {
+    flex-direction: column !important;
+    right: -0.3125rem;
+  }
+  .Deck--left {
+    flex-direction: column !important;
+    left: 1.5625rem;
+  }
+  .Deck--right .PlayerInfo {
+    margin-left: 1.875rem;
+  }
+  .Deck--left .PlayerInfo {
+    margin: 2.5rem 0.125rem 0 0;
+  }
+  .Deck--left,
+  .Deck--right {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 45%;
+  }
+  .Deck--left {
+    transform: translateY(-40%);
+  }
+  .Deck--right {
+    transform: translateY(-55%);
+  }
+  .Card {
+    width: var(--card-width-sm);
+  }
+  .Deck--top .Card,
+  .Deck--bottom .Card {
+    margin-left: -1.375rem;
+  }
+  .PlayerInfo__name,
+  .PlayerInfo__score {
+    font-size: 1rem;
+  }
 }
-

@@ -3,6 +3,11 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "src",
+    "paths": {
+      "util/*": ["util/*"],
+      "commonComponents/*": ["commonComponents/*"]
+    }
   }
 }

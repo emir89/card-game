@@ -1,18 +1,48 @@
 .SelectedImg {
-    width: 100px;
-    height: auto;
+  width: 100px;
+  height: auto;
+}
+
+.WinningCard {
+  animation: winning-glow 0.9s cubic-bezier(0.4, 1.4, 0.6, 1) forwards;
+  box-shadow:
+    0 0 16px 6px #fbbf24,
+    0 0 32px 12px #fffbe6;
+  border-radius: 12px;
+  z-index: 3;
+  transform: scale(1.08) rotate(-3deg);
+}
+
+@keyframes winning-glow {
+  0% {
+    box-shadow:
+      0 0 0 0 #fbbf24,
+      0 0 0 0 #fffbe6;
+    transform: scale(1) rotate(0deg);
+  }
+  60% {
+    box-shadow:
+      0 0 32px 12px #fbbf24,
+      0 0 64px 24px #fffbe6;
+    transform: scale(1.14) rotate(-5deg);
+  }
+  100% {
+    box-shadow:
+      0 0 16px 6px #fbbf24,
+      0 0 32px 12px #fffbe6;
+    transform: scale(1.08) rotate(-3deg);
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape),
-(min-width: 768px) and (max-width: 1024px) {
-    .SelectedImg {
-        width: 60px;
-    }
+  (min-width: 768px) and (max-width: 1024px) {
+  .SelectedImg {
+    width: 60px;
+  }
 }
 
-@media (min-width: 481px) and (max-width: 767px),
-(min-width: 320px) and (max-width: 480px){
-    .SelectedImg {
-        width: 40px;
-    }
+@media (min-width: 481px) and (max-width: 767px), (min-width: 320px) and (max-width: 480px) {
+  .SelectedImg {
+    width: 40px;
+  }
 }

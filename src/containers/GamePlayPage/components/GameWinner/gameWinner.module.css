@@ -1,14 +1,177 @@
-.WinnerText {
-    font-size: 40px;
+/* Colors */
+:root {
+  --primary-color: #fbbf24;
+  --secondary-color: #f59e42;
+  --background-color: #fff;
+  --text-color: #222;
+  --shadow-color: #000;
 }
 
-.PlayerText {
-    font-size: 20px;
+/* Overlay */
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(16, 18, 32, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  overflow: hidden;
 }
 
-.CloseButton {
-    padding: 10px;
-    width: 100px;
-    cursor: pointer;
-    border-radius: 7px;
+/* Modal */
+.Modal {
+  background: var(--background-color);
+  border-radius: 1.5rem;
+  box-shadow: 0 0.5rem 2rem 0 rgba(31, 38, 135, 0.18);
+  padding: 3rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 320px;
+  max-width: 95vw;
+  animation: modalFadeIn 0.7s cubic-bezier(0.4, 1.4, 0.6, 1);
+  position: relative;
+  z-index: 1300;
+}
+
+.Modal--winner {
+  animation: winnerModalFadeIn 0.7s cubic-bezier(0.4, 1.4, 0.6, 1);
+}
+
+/* Modal animations */
+@keyframes modalFadeIn {
+  from {
+    transform: translateY(40px) scale(0.93);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes winnerModalFadeIn {
+  from {
+    transform: translateY(40px) scale(0.93);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Trophy */
+.Trophy {
+  font-size: 3.2rem;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 8px gold);
+  animation: trophyPop 0.8s cubic-bezier(0.4, 1.4, 0.6, 1);
+}
+
+@keyframes trophyPop {
+  0% {
+    transform: scale(0.5) rotate(-10deg);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.25) rotate(8deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+/* Confetti */
+.Confetti {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 1;
+  animation: confettiDrop 1.6s cubic-bezier(0.4, 1.4, 0.6, 1);
+}
+
+@keyframes confettiDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+    transform: none;
+  }
+}
+
+/* Text */
+.Text {
+  font-family: 'Capriola', sans-serif;
+  color: var(--text-color);
+}
+
+.Text--winner {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  text-shadow: 0 2px 12px #fff5;
+}
+
+.Text--player {
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  padding: 8px 18px;
+  box-shadow: 0 1px 4px #0001;
+  font-weight: 600;
+}
+
+/* Button */
+.Button {
+  padding: 12px 0;
+  width: 130px;
+  cursor: pointer;
+  border-radius: 0.75rem;
+  border: none;
+  margin-top: 1.5rem;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: var(--text-color);
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 0.125rem 0.5rem #0002;
+  transition:
+    background 0.2s,
+    transform 0.12s;
+}
+
+.Button:hover,
+.Button:focus {
+  background: linear-gradient(90deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  transform: scale(1.05);
+}
+
+/* Media queries */
+@media (max-width: 600px) {
+  .Modal {
+    min-width: 0;
+    padding: 1.5rem 4vw 1rem 4vw;
+  }
+  .Text--winner {
+    font-size: 1.3rem;
+  }
+  .Trophy {
+    font-size: 2.1rem;
+  }
 }
